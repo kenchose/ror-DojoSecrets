@@ -15,13 +15,15 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to @user
     else
-      flash[:error] = ["Invalid Combination"]
-      redirect_to '/users'
+      flash[:errors] = ["Invalid Combination"]
+      redirect_to new_session_path
     end
   end
   def destroy
       # Log User out
       # set session[:user_id] to null
       # redirect to login page
+    reset_session
+    redirect_to new_session_path
   end
 end
