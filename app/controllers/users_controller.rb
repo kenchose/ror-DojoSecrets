@@ -18,5 +18,22 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+  end
+
+  def update 
+    @user = User.find(params[:id])
+    if @user.update( name: params[:Name], email: params[:Email])
+      redirect_to edit_user_path(@user.id)
+    else
+      flash[:errors]  = @user.errors.full_messages
+      redirect_to edit_user_path(@user.id)
+    end
+  end 
+
+  def destroy
+    User.find(params[:id]).delete
+    reset_session
+    return redirect_to new_user_path
   end
 end

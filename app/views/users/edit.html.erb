@@ -1,2 +1,16 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1><%= @user.name %> Edit Page</h1>
+
+<form action="/users/<%= @user.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch">
+    <input type="text" name="Name" value="<%= @user.name %>">
+    <input type="email" name="Email" value="<%= @user.email%>">
+    <input type="submit" value="Update">
+</form>
+
+<form action="/users/<%= @user.id %>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="delete">
+	<input type="submit" value="Delete Account">
+</form>
+
