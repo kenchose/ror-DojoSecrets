@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  post "likes/:id" => "likes#create"
+  resources :likes, only: [:destroy]
+  resources :secrets, only: [:index, :create, :destroy]
   resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
-  resources :sessions, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

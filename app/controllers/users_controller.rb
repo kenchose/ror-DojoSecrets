@@ -15,6 +15,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+    @secret = Secret.all
+    @user_secret = @user.secrets
   end
 
   def edit
@@ -32,8 +34,8 @@ class UsersController < ApplicationController
   end 
 
   def destroy
-    User.find(params[:id]).delete
     reset_session
+    User.find(params[:id]).delete
     return redirect_to new_user_path
   end
 end

@@ -19,11 +19,11 @@ class SessionsController < ApplicationController
       redirect_to new_session_path
     end
   end
-  # def destroy
-  #     # Log User out
-  #     # set session[:user_id] to null
-  #     # redirect to login page
-  #   reset_session
-  #   redirect_to new_session_path
-  # end
+  def destroy
+      # Log User out
+      # set session[:user_id] to null
+      # redirect to login page
+    reset_session
+    redirect_to new_session_path
+  end
 end
