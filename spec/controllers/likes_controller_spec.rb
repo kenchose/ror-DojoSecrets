@@ -18,4 +18,15 @@ RSpec.describe LikesController, type: :controller do
       expect(response).to redirect_to("/sessions/new")
     end
   end
+  # context "when signed in as the wrong user" do
+  #   before do
+  #     @secret2 = create(:secret, :user, name:"Zack Tran", email: "zack@tran.com",)
+  #     @user2 = create(:user, name:"Zack Tran", email: "zack@tran.com")
+  #     session[:user_id] = @user2.id
+  #   end
+  #   it "shouldn't be able to destroy a like" do
+  #     delete :destroy, id: @like
+  #     expect(response).to redirect_to("/users/#{@user2.id}")
+  #   end
+  # end 
 end

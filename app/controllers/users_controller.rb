@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
+  before_action :user_autho, only: [:edit, :show, :update, :destroy]
   def new
   end
 
@@ -39,4 +40,11 @@ class UsersController < ApplicationController
     User.find(params[:id]).delete
     return redirect_to new_user_path
   end
+
+  private
+    def user_autho
+      if current_user != User.find(params[:id])
+        redirect_to "/users/#{session[:user_id]}"
+      end
+    end
 end

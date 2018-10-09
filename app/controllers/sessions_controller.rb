@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
       # Log User out
       # set session[:user_id] to null
       # redirect to login page
+    if current_user == User.find(params[:id])
     reset_session
     redirect_to new_session_path
   end
