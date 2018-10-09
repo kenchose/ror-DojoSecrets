@@ -15,10 +15,5 @@ class LikesController < ApplicationController
     @secret = Secret.find(params[:id])
     Like.find_by(user: current_user, secret: @secret).delete
     redirect_to secrets_path
-    # @like = Like.find_by(secret: params[:secret_id])
-    # if current_user == @like.liked_by
-    #   @like.delete
-    #   redirect_to secrets_path
-    # end
   end
 end
